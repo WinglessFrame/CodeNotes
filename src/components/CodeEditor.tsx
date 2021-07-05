@@ -10,6 +10,8 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
         monacoEditor.onDidChangeModelContent(() => {
             onChange(getValue());
         })
+
+        monacoEditor.getModel()?.updateOptions({ tabSize: 2 })
     }
 
     return <MonacoEditor
