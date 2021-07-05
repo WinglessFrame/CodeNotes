@@ -50,7 +50,8 @@ const App = () => {
             try {
               eval(event.data);
             } catch (error) {
-              document.querySelector('#root').innerHTML = error.message
+              document.querySelector('#root').innerHTML = '<div style="color: red"><h4>Runtime Error</h4>' + error + '</div>'
+              console.errror(error);
             }
           }, false);
         </script>
