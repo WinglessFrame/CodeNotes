@@ -52,7 +52,7 @@ const App = () => {
               eval(event.data);
             } catch (error) {
               document.querySelector('#root').innerHTML = '<div style="color: red"><h4>Runtime Error</h4>' + error + '</div>'
-              console.errror(error);
+              console.error(error);
             }
           }, false);
         </script>
@@ -62,7 +62,10 @@ const App = () => {
 
   return (
     <div>
-      <CodeEditor />
+      <CodeEditor
+        initialValue="document.querySelector('#root').innerHTML = '<h1>Hi!</h1>'"
+        onChange={(value) => setInput(value)}
+      />
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
