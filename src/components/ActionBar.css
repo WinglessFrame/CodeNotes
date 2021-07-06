@@ -3,4 +3,10 @@
   top: 0;
   right: 0;
   z-index: 999;
+  opacity: 0.25;
+  transition: opacity 0.2s;
+}
+
+.action-bar:hover {
+  opacity: 1;
 }
