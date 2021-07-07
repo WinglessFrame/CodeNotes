@@ -7,6 +7,7 @@ import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector'
 
 import './CodeCell.css'
+import { useCumulativeCode } from '../hooks/useCumulativeCode';
 
 interface CodeCellProps {
   cell: Cell
@@ -14,42 +15,12 @@ interface CodeCellProps {
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   const { updateCell, createBundle } = useActions()
-  const bundle = useTypedSelector((state) => state.bundles[cell.id])
-  const cumulativeCode = useTypedSelector((state) => {
-    const { data, order } = state.cells
-    const orderedCells = order.map(id => data[id])
-
-    const codeCells = [
-      `
-        import _React from 'react'
-        import _ReactDOM from 'react-dom'
-        const show = (value) => {
-          const root = document.getElementById('root')
-          if (typeof value === 'object'){
-            if (value.$$typeof && value.props) {
-              _ReactDOM.render(value, root)
-            }else {
-              root.innerHTML = JSON.stringify(value)
-            }
-          } else
-          root.innerHTML = value
-        }
-      `
-    ]
-    for (let c of orderedCells) {
-      if (c.type === 'code') {
-        codeCells.push(c.content)
-      }
-      if (c.id === cell.id) {
-        break;
-      }
-    }
-    return codeCells.join('\n')
-  })
+  const bundle = useTypedSelector(state => state.bundles[cell.id])
+  const cumulativeCode = useCumulativeCode(cell.id)
 
   useEffect(() => {
     if (!bundle) {
-      createBundle(cell.id, cell.content)
+      createBundle(cell.id, cumulativeCode)
       return
     }
 
