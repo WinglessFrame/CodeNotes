@@ -1,6 +1,5 @@
 import React from 'react'
 import firebase from 'firebase/app'
-import * as db from '../firestore'
 import SignInOut from './SignInOut'
 
 interface NavBarProps {
@@ -8,8 +7,6 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ user }) => {
-  const [dropDownActive, setDropDownActive] = React.useState<boolean>(false)
-  const dropDownClass = `dropdown ${dropDownActive ? 'is-active' : ''}`
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
