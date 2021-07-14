@@ -2,6 +2,8 @@ import React from 'react'
 import firebase from 'firebase/app'
 import SignInOut from './SignInOut'
 
+import logo from '../images/codelogo.png'
+
 interface NavBarProps {
   user: firebase.User | null
 }
@@ -10,11 +12,6 @@ const NavBar: React.FC<NavBarProps> = ({ user }) => {
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo" />
-        </a>
-      </div>
 
 
       <div className="navbar-start">

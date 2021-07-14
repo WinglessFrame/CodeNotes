@@ -39,7 +39,9 @@ export async function fetchUserNotes(uid: string) {
     .collection('notes')
     .where('author', '==', uid)
     .get();
-  return snapshot.docs;
+  const id = snapshot.docs[0].id;
+  const content = snapshot.docs[0].data();
+  return { id, content };
 }
 
 export async function uploadUserNotes(id: string, data: string) {

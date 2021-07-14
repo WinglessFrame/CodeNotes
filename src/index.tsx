@@ -8,7 +8,6 @@ import { store } from './store';
 import useAuth from './hooks/useAuth';
 import NavBar from './components/NavBar';
 import Loading from './components/Loading';
-import * as db from './firestore'
 
 const App: React.FC = () => {
   const { user, loading } = useAuth()

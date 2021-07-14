@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+import * as db from '../../firestore';
 
 import { CellTypes, Direction } from './../cell';
 import {
@@ -69,5 +70,29 @@ export const createBundle = (cellId: string, input: string) => {
         bundle: result,
       },
     });
+  };
+};
+
+export const fetchNotes = (uid: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.FETCH_CELLS });
+    try {
+      const {
+        id,
+        content: { data, order },
+      } = await db.fetchUserNotes(uid);
+
+      dispatch({
+        type: ActionType.FETCH_CELLS_COMPLETE,
+        payload: Object.values(JSON.parse(data)),
+      });
+    } catch (err) {
+      if (err instanceof Error) {
+        dispatch({
+          type: ActionType.FETCH_CELLS_ERROR,
+          payload: err.message,
+        });
+      }
+    }
   };
 };
