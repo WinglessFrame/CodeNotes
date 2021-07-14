@@ -25,7 +25,7 @@ export async function signInWithGoogle() {
   window.location.reload();
 }
 
-export function checkAuth(cb: () => void) {
+export function checkAuth(cb: (user: firebase.User | null) => void) {
   auth.onAuthStateChanged(cb);
 }
 
