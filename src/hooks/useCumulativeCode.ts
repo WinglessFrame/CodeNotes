@@ -32,9 +32,9 @@ export const useCumulativeCode = (cellId: string) => {
           codeCells.push(showFunc);
         }
         codeCells.push(c.content);
-      }
-      if (c.id === cellId) {
-        break;
+        if (c.id === cellId) {
+          break;
+        }
       }
     }
     return codeCells.join('\n');
