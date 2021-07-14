@@ -39,6 +39,11 @@ export async function fetchUserNotes(uid: string) {
     .collection('notes')
     .where('author', '==', uid)
     .get();
-  console.log(snapshot.docs[0].data());
   return snapshot.docs;
+}
+
+export async function uploadUserNotes(id: string, data: string) {
+  await db.collection('notes').doc(id).update({
+    data,
+  });
 }

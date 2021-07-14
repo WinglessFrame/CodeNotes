@@ -13,7 +13,6 @@ import * as db from './firestore'
 const App: React.FC = () => {
   const { user, loading } = useAuth()
   if (loading) return <Loading />
-  if (user) db.fetchUserNotes(user?.uid)
   return (
     <>
       <NavBar user={user} />
