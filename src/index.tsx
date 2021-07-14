@@ -7,10 +7,11 @@ import 'bulmaswatch/superhero/bulmaswatch.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import useAuth from './hooks/useAuth';
 import NavBar from './components/NavBar';
+import Loading from './components/Loading';
 
 const App: React.FC = () => {
   const { user, loading } = useAuth()
-  if (loading) return <h1>Loading...</h1>
+  if (loading) return <Loading />
   return (
     <>
       <NavBar user={user} />
