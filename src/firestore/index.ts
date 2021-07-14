@@ -33,3 +33,12 @@ export async function logOut() {
   await auth.signOut();
   window.location.reload();
 }
+
+export async function fetchUserNotes(uid: string) {
+  const snapshot = await db
+    .collection('notes')
+    .where('author', '==', uid)
+    .get();
+  console.log(snapshot.docs[0].data());
+  return snapshot.docs;
+}
