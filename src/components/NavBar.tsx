@@ -2,8 +2,6 @@ import React from 'react'
 import firebase from 'firebase/app'
 import SignInOut from './SignInOut'
 
-import logo from '../images/codelogo.png'
-
 interface NavBarProps {
   user: firebase.User | null
 }

@@ -17,7 +17,7 @@ const firebaseApp = !firebase.apps.length
   : firebase.app();
 const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
-const storage = firebaseApp.storage();
+// const storage = firebaseApp.storage();
 
 export async function signInWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();

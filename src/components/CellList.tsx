@@ -7,7 +7,7 @@ import useAuth from '../hooks/useAuth'
 import { useActions } from '../hooks/useActions'
 
 const CellList: React.FC = () => {
-  const { user, loading } = useAuth()
+  const { user } = useAuth()
   const { fetchNotes } = useActions()
 
   useEffect(() => {
