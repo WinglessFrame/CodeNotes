@@ -4,13 +4,14 @@ import { Cell } from './../cell';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
-interface CellsState {
+export interface CellsState {
   loading: boolean;
   error: string | null;
   order: string[];
   data: {
     [key: string]: Cell;
   };
+  id: string;
 }
 
 const initialState: CellsState = {
@@ -18,6 +19,7 @@ const initialState: CellsState = {
   error: null,
   order: [],
   data: {},
+  id: '',
 };
 
 const cellsReducer = produce(
@@ -67,10 +69,10 @@ const cellsReducer = produce(
         return state;
 
       case ActionType.FETCH_CELLS_COMPLETE:
-        // console.log(action.payload, 'reducer');
-        const data = action.payload;
-        state.order = data.map((cell) => cell.id);
-        state.data = action.payload.reduce((acc, cell) => {
+        const { cells, id: noteId } = action.payload;
+        state.id = noteId;
+        state.order = cells.map((cell) => cell.id);
+        state.data = cells.reduce((acc, cell) => {
           acc[cell.id] = cell;
           return acc;
         }, {} as CellsState['data']);

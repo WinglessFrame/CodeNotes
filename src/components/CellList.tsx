@@ -11,6 +11,9 @@ const CellList: React.FC = () => {
   const { user, loading } = useAuth()
   const { fetchNotes } = useActions()
 
+  const { saveCells } = useActions()
+  saveCells()
+
   useEffect(() => {
     if (user) {
       fetchNotes(user.uid)

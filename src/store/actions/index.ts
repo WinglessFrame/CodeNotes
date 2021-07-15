@@ -54,7 +54,10 @@ export interface FetchCellsAction {
 }
 export interface FetchCellsCompleteAction {
   type: ActionType.FETCH_CELLS_COMPLETE;
-  payload: Cell[];
+  payload: {
+    cells: Cell[];
+    id: string;
+  };
 }
 export interface FetchCellsErrorAction {
   type: ActionType.FETCH_CELLS_ERROR;

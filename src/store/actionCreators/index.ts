@@ -14,6 +14,7 @@ import {
 import { ActionType } from '../action-types';
 import bundle from '../../bundler';
 import { RootState } from '../reducers';
+import { CellsState } from '../reducers/cellsReducer';
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -94,7 +95,10 @@ export const fetchNotes = (uid: string) => {
 
       dispatch({
         type: ActionType.FETCH_CELLS_COMPLETE,
-        payload: Object.values(JSON.parse(data)),
+        payload: {
+          cells: Object.values(JSON.parse(data)),
+          id,
+        },
       });
     } catch (err) {
       if (err instanceof Error) {
@@ -107,21 +111,32 @@ export const fetchNotes = (uid: string) => {
   };
 };
 
-// export const saveCells = () => {
-//   return async (dispatch: Dispatch<Action>, getState: () => RootState) => {
-//     const {
-//       cells: { data, order },
-//     } = getState();
+export const saveCells = () => {
+  return async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+    const {
+      cells: { data, id, order },
+      user: { user },
+    } = getState();
+    if (user) {
+      const cells = JSON.stringify(
+        order
+          .map((id) => data[id])
+          .reduce((acc, cell) => {
+            acc[cell.id] = cell;
+            return acc;
+          }, {} as CellsState['data'])
+      );
+      // console.log(id, cells);
+      await db.uploadUserNotes(id, cells);
+    }
 
-//     const cells = order.map((id) => data[id]);
-
-//     try {
-//       await axios.post('/cells', { cells });
-//     } catch (err) {
-//       dispatch({
-//         type: ActionType.SAVE_CELLS_ERROR,
-//         payload: err.message,
-//       });
-//     }
-//   };
-// };
+    // try {
+    //   await axios.post('/cells', { cells });
+    // } catch (err) {
+    //   dispatch({
+    //     type: ActionType.SAVE_CELLS_ERROR,
+    //     payload: err.message,
+    //   });
+    // }
+  };
+};
