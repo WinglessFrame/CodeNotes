@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# CodeNotes
+Hello! This app is made for learning purposes by [me](https://github.com/WinglessFrame).
+---
+[Link to the app](https://vibrant-panini-9b5238.netlify.app/)
+---
+- ### What is this about?
+ As the name of the app says, this app is made for making notes.
+- ### Why is it special then?
+You can see the answer under this text block: Yes, it can run JS `code`!
+- ### Is it just an eval functhion that runs code 😐?
+No 🙃, it uses esbuild with WebAssembly to assemble your code and execute it in the` <iframe> `element! This means, that you can import **any library** you want!
+- ### What!? No limits 😵?
+No, unfortunately 😔, there are some things, that are impossible to do: one of them is working with local storage - this is the limitation of working with `<iframe>` in the way I did it for security purposes.
+- ### Damn, this app will use a lot of internet traffic to download libraries...  🙄
+No, it won't. This app caches all downloaded libraries inside the browser so download once - use forever (almost 😁)
+- ### Is there some quality of life functions for me 👉👈?
+Yes! I was prepared for this question 😅.
+There is a `show()` function that immediately renders any piece of data (even React components) on the screen.
+Also code from upper ☁️ code cells are available inside bottom ⚓ ones.
+- ### Can i get any element in code document via `document.querySelector`?
+Yes 😊! You can grab root element! It has `id `of `root`. Use `document.getElementById('root')` for example to get it.
+- ### What about regular text 📃? 
+There is 2 types of cells: Code and Text. You can make how much you want of them in your's note ♾️. Code and Text cell both contains of 2 parts: preview and editing field. To edit text cell you have to press on it and then the editor would appear.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technplogy stack used
+- React
+- TypeScript
+- Redux (redux-thunk, immet)
+- Firebase
+- esbuild-wasm (WebAssembly version of esbuild, used for building user code)
+- bulmaCSS
