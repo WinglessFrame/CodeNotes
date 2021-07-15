@@ -39,9 +39,22 @@ export async function fetchUserNotes(uid: string) {
     .collection('notes')
     .where('author', '==', uid)
     .get();
-  const id = snapshot.docs[0].id;
-  const content = snapshot.docs[0].data();
-  return { id, content };
+  if (snapshot.docs.length > 0) {
+    const id = snapshot.docs[0].id;
+    const data = snapshot.docs[0].data().data as string;
+    return { id, data };
+  } else {
+    const defaultCellValuesnapshot = await db
+      .collection('notes')
+      .doc('DefaultCells')
+      .get();
+    const defaultData = defaultCellValuesnapshot.data();
+    if (defaultData) {
+      const id = await createUserNote(uid, defaultData.data);
+      return { id, data: defaultData.data };
+    }
+    return { id: '', data: '' };
+  }
 }
 
 export async function uploadUserNotes(id: string, data: string) {
@@ -50,4 +63,12 @@ export async function uploadUserNotes(id: string, data: string) {
       data,
     });
   }
+}
+
+export async function createUserNote(uid: string, defaultData: string) {
+  const note = await db.collection('notes').add({
+    author: uid,
+    data: defaultData,
+  });
+  return note.id;
 }

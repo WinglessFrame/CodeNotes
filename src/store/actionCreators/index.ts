@@ -88,10 +88,7 @@ export const fetchNotes = (uid: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.FETCH_CELLS });
     try {
-      const {
-        id,
-        content: { data, order },
-      } = await db.fetchUserNotes(uid);
+      const { id, data } = await db.fetchUserNotes(uid);
 
       dispatch({
         type: ActionType.FETCH_CELLS_COMPLETE,
