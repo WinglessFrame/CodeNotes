@@ -1,3 +1,4 @@
+import firebase from 'firebase/app';
 import { Dispatch } from 'redux';
 import * as db from '../../firestore';
 
@@ -7,10 +8,12 @@ import {
   InsertCellAfterAction,
   MoveCellAction,
   UpdateCellAction,
+  SetUserAction,
   Action,
 } from './../actions/index';
 import { ActionType } from '../action-types';
 import bundle from '../../bundler';
+import { RootState } from '../reducers';
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -73,6 +76,13 @@ export const createBundle = (cellId: string, input: string) => {
   };
 };
 
+export const setUser = (user: firebase.User | null): SetUserAction => {
+  return {
+    type: ActionType.SET_USER,
+    payload: { user },
+  };
+};
+
 export const fetchNotes = (uid: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.FETCH_CELLS });
@@ -96,3 +106,22 @@ export const fetchNotes = (uid: string) => {
     }
   };
 };
+
+// export const saveCells = () => {
+//   return async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+//     const {
+//       cells: { data, order },
+//     } = getState();
+
+//     const cells = order.map((id) => data[id]);
+
+//     try {
+//       await axios.post('/cells', { cells });
+//     } catch (err) {
+//       dispatch({
+//         type: ActionType.SAVE_CELLS_ERROR,
+//         payload: err.message,
+//       });
+//     }
+//   };
+// };

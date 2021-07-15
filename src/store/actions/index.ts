@@ -1,3 +1,4 @@
+import firebase from 'firebase/app';
 import { Cell, CellTypes, Direction } from './../cell';
 import { ActionType } from '../action-types';
 
@@ -65,6 +66,11 @@ export interface SaveCellsErrorAction {
   payload: string;
 }
 
+export interface SetUserAction {
+  type: ActionType.SET_USER;
+  payload: { user: firebase.User | null };
+}
+
 export type Action =
   | MoveCellAction
   | DeleteCellAction
@@ -75,4 +81,5 @@ export type Action =
   | FetchCellsAction
   | FetchCellsCompleteAction
   | FetchCellsErrorAction
-  | SaveCellsErrorAction;
+  | SaveCellsErrorAction
+  | SetUserAction;

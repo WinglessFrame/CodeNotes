@@ -9,21 +9,28 @@ import useAuth from './hooks/useAuth';
 import NavBar from './components/NavBar';
 import Loading from './components/Loading';
 
-const App: React.FC = () => {
+const MainApp: React.FC = () => {
   const { user, loading } = useAuth()
   if (loading) return <Loading />
   return (
     <>
       <NavBar user={user} />
       {user &&
-        <Provider store={store}>
-          <div>
-            <CellList />
-          </div>
-        </Provider>
+        <div>
+          <CellList />
+        </div>
       }
     </>)
 };
+
+const App: React.FC = () => {
+  return (
+    <Provider store={store}>
+      <MainApp />
+    </Provider>
+
+  )
+}
 
 
 ReactDOM.render(<App />, document.querySelector('#root'));
