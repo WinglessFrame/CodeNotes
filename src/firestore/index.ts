@@ -45,7 +45,6 @@ export async function fetchUserNotes(uid: string) {
 }
 
 export async function uploadUserNotes(id: string, data: string) {
-  console.log(id, data);
   if (id) {
     await db.collection('notes').doc(id).update({
       data,

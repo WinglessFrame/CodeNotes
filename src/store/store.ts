@@ -1,13 +1,14 @@
+import thunk from 'redux-thunk';
+import { persistMiddleware } from './middlewares/persistMiddleware';
 import { ActionType } from './action-types/index';
 import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
 
 export const store = createStore(
   rootReducer,
   {},
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk, persistMiddleware))
 );
 //     id: null,
 //     type: 'code',

@@ -3,16 +3,12 @@ import { useTypedSelector } from '../hooks/useTypedSelector'
 import AddCell from './AddCell'
 import CellListItem from './CellListItem'
 import './CellList.css'
-import * as db from '../firestore'
 import useAuth from '../hooks/useAuth'
 import { useActions } from '../hooks/useActions'
 
 const CellList: React.FC = () => {
   const { user, loading } = useAuth()
   const { fetchNotes } = useActions()
-
-  const { saveCells } = useActions()
-  saveCells()
 
   useEffect(() => {
     if (user) {

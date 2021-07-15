@@ -126,8 +126,16 @@ export const saveCells = () => {
             return acc;
           }, {} as CellsState['data'])
       );
-      // console.log(id, cells);
-      await db.uploadUserNotes(id, cells);
+      try {
+        await db.uploadUserNotes(id, cells);
+      } catch (error) {
+        if (error instanceof Error) {
+          dispatch({
+            type: ActionType.SAVE_CELLS_ERROR,
+            payload: error.message,
+          });
+        }
+      }
     }
 
     // try {
