@@ -23,7 +23,7 @@ const UnAuthApp: React.FC = () => {
   return (
     <div>
       <h2 className="has-text-centered is-size-3 my-4">
-        Please, sign Up to save your notes!
+        Please, sign Up to save your notes and add new cells with code and text!
       </h2>
       <CellList />
     </div>
