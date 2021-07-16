@@ -6,7 +6,7 @@ Hello! This app is made for learning purposes by [me](https://github.com/Wingles
 - ### What is this about?
  As the name of the app says, this app is made for making notes.
 - ### Why is it special then?
-You can see the answer under this text block: Yes, it can run JS `code`!
+It can run JS `code`!
 - ### Is it just an eval functhion that runs code 😐?
 No 🙃, it uses esbuild with WebAssembly to assemble your code and execute it in the` <iframe> `element! This means, that you can import **any library** you want!
 - ### What!? No limits 😵?
