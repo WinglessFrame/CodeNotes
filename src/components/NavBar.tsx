@@ -12,7 +12,7 @@ const NavBar: React.FC = () => {
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
           <img src={logo} alt="logo" />
-          <span style={{ marginLeft: "5px", fontSize: "1.5rem", letterSpacing: "1px" }}>CodeNotes</span>
+          <span className="mx-2 is-size-3">CodeNotes</span>
         </a>
       </div>
 
@@ -28,9 +28,9 @@ const NavBar: React.FC = () => {
       <div className="navbar-item">
         {user &&
           <>
-            <span> {user.displayName}</span>
-            <figure className="image" style={{ margin: "auto 10px" }}>
-              <img src={user.photoURL || undefined} style={{ width: "32px", height: "32px", objectFit: 'cover', background: "#fff" }} alt="google profile img" className="is-rounded" />
+            <span className="is-size-5">{user.displayName}</span>
+            <figure className="image mx-4">
+              <img src={user.photoURL || undefined} alt="google profile img" className="is-rounded" />
             </figure>
           </>
         }
