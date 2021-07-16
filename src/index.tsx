@@ -22,6 +22,9 @@ const AuthApp: React.FC = () => {
 const UnAuthApp: React.FC = () => {
   return (
     <div>
+      <h2>
+        Please, sign Up to see the tutorial
+      </h2>
       <CellList />
     </div>
   )
