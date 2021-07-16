@@ -8,13 +8,13 @@ import { useActions } from '../hooks/useActions'
 
 const CellList: React.FC = () => {
   const { user } = useAuth()
-  const { fetchNotes } = useActions()
+  const { fetchNotes, fetchDefaultNotes } = useActions()
 
   useEffect(() => {
     if (user) {
       fetchNotes(user.uid)
     } else {
-      fetchNotes(null)
+      fetchDefaultNotes()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])

@@ -84,7 +84,31 @@ export const setUser = (user: firebase.User | null): SetUserAction => {
   };
 };
 
-export const fetchNotes = (uid: string | null) => {
+export const fetchDefaultNotes = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.FETCH_CELLS });
+    try {
+      const { id, data } = await db.fetchDefaultNotes();
+
+      dispatch({
+        type: ActionType.FETCH_CELLS_COMPLETE,
+        payload: {
+          cells: Object.values(JSON.parse(data)),
+          id,
+        },
+      });
+    } catch (err) {
+      if (err instanceof Error) {
+        dispatch({
+          type: ActionType.FETCH_CELLS_ERROR,
+          payload: err.message,
+        });
+      }
+    }
+  };
+};
+
+export const fetchNotes = (uid: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.FETCH_CELLS });
     try {
