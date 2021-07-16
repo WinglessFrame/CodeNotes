@@ -1,12 +1,10 @@
 import React from "react";
 import * as db from "../firestore";
-import firebase from "firebase/app"
+import useAuth from '../hooks/useAuth';
 
-interface SignInOutProps {
-  user: firebase.User | null
-}
+const SignInOut: React.FC = () => {
+  const { user } = useAuth()
 
-const SignInOut: React.FC<SignInOutProps> = ({ user }) => {
   return (
     <div className="buttons">
       {user ?

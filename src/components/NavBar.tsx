@@ -2,13 +2,12 @@ import React from 'react'
 import firebase from 'firebase/app'
 import SignInOut from './SignInOut'
 import logo from '../images/IconWithoutFrame.svg'
+import useAuth from '../hooks/useAuth'
 
-interface NavBarProps {
-  user: firebase.User | null
-}
 
-const NavBar: React.FC<NavBarProps> = ({ user }) => {
 
+const NavBar: React.FC = () => {
+  const { user } = useAuth()
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -36,7 +35,7 @@ const NavBar: React.FC<NavBarProps> = ({ user }) => {
             </figure>
           </>
         }
-        <SignInOut user={user} />
+        <SignInOut />
       </div>
 
     </nav >

@@ -14,7 +14,7 @@ const MainApp: React.FC = () => {
   if (loading) return <Loading />
   return (
     <>
-      <NavBar user={user} />
+      <NavBar />
       {user &&
         <div>
           <CellList />

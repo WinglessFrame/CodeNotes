@@ -22,7 +22,6 @@ const auth = firebaseApp.auth();
 export async function signInWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   await auth.signInWithPopup(provider);
-  window.location.reload();
 }
 
 export function checkAuth(cb: (user: firebase.User | null) => void) {
@@ -31,7 +30,6 @@ export function checkAuth(cb: (user: firebase.User | null) => void) {
 
 export async function logOut() {
   await auth.signOut();
-  window.location.reload();
 }
 
 export async function fetchUserNotes(uid: string) {

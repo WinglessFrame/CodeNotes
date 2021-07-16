@@ -134,14 +134,5 @@ export const saveCells = () => {
         }
       }
     }
-
-    // try {
-    //   await axios.post('/cells', { cells });
-    // } catch (err) {
-    //   dispatch({
-    //     type: ActionType.SAVE_CELLS_ERROR,
-    //     payload: err.message,
-    //   });
-    // }
   };
 };

@@ -13,7 +13,7 @@ function useAuth() {
     return db.checkAuth((user) => {
       setLoading(false);
       setUser(user);
-      if (!stateUser) {
+      if (stateUser === null && user !== null) {
         setFirebaseUser(user);
       }
     });
