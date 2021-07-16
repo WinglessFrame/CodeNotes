@@ -1,7 +1,7 @@
 # CodeNotes
 Hello! This app is made for learning purposes by [me](https://github.com/WinglessFrame).
 ---
-[Link to the app](https://vibrant-panini-9b5238.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/47c4c3aa-55e6-4cb9-b654-559a15ef091e/deploy-status)](https://app.netlify.com/sites/codenotesapp/deploys)
 ---
 - ### What is this about?
  As the name of the app says, this app is made for making notes.
