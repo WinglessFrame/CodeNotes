@@ -8,11 +8,14 @@ import { useActions } from '../hooks/useActions'
 
 const CellList: React.FC = () => {
   const { user } = useAuth()
-  const { fetchNotes } = useActions()
+  const { fetchNotes, insertCellAfter } = useActions()
 
   useEffect(() => {
     if (user) {
       fetchNotes(user.uid)
+    } else {
+      insertCellAfter(null, 'code')
+      insertCellAfter(null, 'text')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
@@ -25,13 +28,13 @@ const CellList: React.FC = () => {
   const renderedCells = cells.map(cell => (
     <Fragment key={cell.id}>
       <CellListItem cell={cell} />
-      <AddCell previousCellId={cell.id} />
+      {user && (<AddCell previousCellId={cell.id} />)}
     </Fragment>
   ))
 
   return (
     <div className='cell-list'>
-      <AddCell previousCellId={null} />
+      {user && (<AddCell previousCellId={null} />)}
       {renderedCells}
     </div>
   )

@@ -10,28 +10,42 @@ import useAuth from './hooks/useAuth';
 import NavBar from './components/NavBar';
 import Loading from './components/Loading';
 
-const MainApp: React.FC = () => {
-  const { user, loading } = useAuth()
-  if (loading) return <Loading />
+
+const AuthApp: React.FC = () => {
   return (
-    <>
-      <NavBar />
-      {user &&
-        <div>
-          <CellList />
-        </div>
-      }
-    </>)
+    <div>
+      <CellList />
+    </div>
+  )
 };
 
-const App: React.FC = () => {
+const UnAuthApp: React.FC = () => {
   return (
-    <Provider store={store}>
-      <MainApp />
-    </Provider>
+    <div>
+      <CellList />
+    </div>
+  )
+}
 
+const App: React.FC = () => {
+  const { user, loading } = useAuth()
+
+  return (
+    <>
+      {loading &&
+        (<Loading />)
+      }
+
+      <NavBar />
+
+      {user ?
+        (<AuthApp />)
+        :
+        (<UnAuthApp />)
+      }
+    </>
   )
 }
 
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector('#root'));
