@@ -136,3 +136,9 @@ export const saveCells = () => {
     }
   };
 };
+
+export const clearCellsState = () => {
+  return {
+    type: ActionType.CLEAR_CELLS_STATE,
+  };
+};

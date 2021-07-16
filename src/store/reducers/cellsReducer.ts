@@ -87,6 +87,10 @@ const cellsReducer = produce(
         state.error = action.payload;
         return state;
 
+      case ActionType.CLEAR_CELLS_STATE:
+        state = initialState;
+        return state;
+
       default:
         return state;
     }

@@ -64,6 +64,10 @@ export interface FetchCellsErrorAction {
   payload: string;
 }
 
+export interface ClearCellsStateAction {
+  type: ActionType.CLEAR_CELLS_STATE;
+}
+
 export interface SaveCellsErrorAction {
   type: ActionType.SAVE_CELLS_ERROR;
   payload: string;
@@ -85,4 +89,5 @@ export type Action =
   | FetchCellsCompleteAction
   | FetchCellsErrorAction
   | SaveCellsErrorAction
+  | ClearCellsStateAction
   | SetUserAction;
