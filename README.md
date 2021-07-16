@@ -22,7 +22,7 @@ Yes 😊! You can grab root element! It has `id `of `root`. Use `document.getEle
 - ### What about regular text 📃? 
 There is 2 types of cells: Code and Text. You can make how much you want of them in your's note ♾️. Code and Text cell both contains of 2 parts: preview and editing field. To edit text cell you have to press on it and then the editor would appear.
 
-## Technplogy stack used
+## Technology stack used
 - React
 - TypeScript
 - Redux (redux-thunk, immet)
