@@ -11,11 +11,14 @@ const SignInOut: React.FC<SignInOutProps> = ({ user }) => {
     <div className="buttons">
       {user ?
         <button className="button is-light is-outlined" onClick={db.logOut}>
-          <strong>Log out</strong>
+          <strong style={{ letterSpacing: "1px" }}>Log out</strong>
         </button>
         :
-        <button className="button is-primary is-outlined" onClick={db.signInWithGoogle}>
-          Log in
+        <button className="button is-primary is-outlined" onClick={db.signInWithGoogle} style={{ letterSpacing: "1px" }}>
+          Log in with
+          <span className='icon is-small' style={{ marginLeft: "5px" }}>
+            <i className='fab fa-google'></i>
+          </span>
         </button>
       }
     </div>
