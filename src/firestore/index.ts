@@ -34,7 +34,18 @@ export async function logOut() {
   window.location.reload();
 }
 
-export async function fetchUserNotes(uid: string) {
+export async function fetchUserNotes(uid: string | null) {
+  if (uid === null) {
+    const defaultCellValuesnapshot = await db
+      .collection('notes')
+      .doc('DefaultCells')
+      .get();
+    const defaultData = defaultCellValuesnapshot.data();
+    if (defaultData) {
+      return { id: '', data: defaultData.data };
+    }
+    return { id: '', data: '' };
+  }
   const snapshot = await db
     .collection('notes')
     .where('author', '==', uid)

@@ -22,8 +22,8 @@ const AuthApp: React.FC = () => {
 const UnAuthApp: React.FC = () => {
   return (
     <div>
-      <h2>
-        Please, sign Up to see the tutorial
+      <h2 className="has-text-centered is-size-3 my-4">
+        Please, sign Up to save your notes!
       </h2>
       <CellList />
     </div>

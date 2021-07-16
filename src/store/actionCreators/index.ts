@@ -84,7 +84,7 @@ export const setUser = (user: firebase.User | null): SetUserAction => {
   };
 };
 
-export const fetchNotes = (uid: string) => {
+export const fetchNotes = (uid: string | null) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.FETCH_CELLS });
     try {
